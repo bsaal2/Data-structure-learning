@@ -1,4 +1,6 @@
 
+/** Stack implementation using Array and Javascript */
+
 function Stack() {
    this.elements = [];
 }
