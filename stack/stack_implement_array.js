@@ -18,7 +18,7 @@ Stack.prototype.peek = function() {
 }
 
 Stack.prototype.isEmpty = function() {
-    return this.elements.length;
+    return !this.elements.length;
 }
 
 /** 
