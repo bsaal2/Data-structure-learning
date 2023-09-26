@@ -21,6 +21,8 @@ Stack.prototype.isEmpty = function() {
     return this.elements.length;
 }
 
+/** 
+ * Commenting the code for now
 const stack = new Stack();
 stack.push(1);
 stack.push(2);
@@ -32,3 +34,6 @@ console.log(stack); // Outputs: Stack { elements: [ 1, 2, 3, 4, 5 ] }
 const removeElement = stack.pop();
 console.log(removeElement);
 console.log(stack);
+*/
+
+module.exports = Stack;
