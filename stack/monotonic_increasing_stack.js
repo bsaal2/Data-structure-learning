@@ -16,3 +16,9 @@ for (let number of input) {
  * This is the monotonic increasing stack
  */
 console.log(stackObj);
+
+/**
+ * Monotonic increasing stack means its element increases from the bottom of the stack to top
+ * It is mainly previous/next smaller/larger problem
+ */
+
