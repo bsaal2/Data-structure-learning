@@ -29,11 +29,13 @@ LinkedList.prototype.reverseLinkedList = function() {
 }
 
 /** Implementation of Linked List */
+/** 
 const llObject = new LinkedList();
 llObject.addNode(1);
 llObject.addNode(2);
 llObject.addNode(3);
 console.log(llObject);
+**/
 
 module.exports = {
     Node,
