@@ -21,7 +21,19 @@ Queue.prototype.peek = function() {
 }
 
 Queue.prototype.isEmpty = function() {
-    return !!this.elements.length;
+    return !this.elements.length;
+}
+
+Queue.prototype.printAllElements = function() {
+    let index = 0;
+    const totalElement = this.elements.length;
+    if(!totalElement) console.log('Queue is empty');
+
+    const iterator = this.elements[Symbol.iterator]();
+    while(index < totalElement) {
+        console.log(iterator.next().value);
+        index++;
+    }
 }
 
 module.exports = Queue;
