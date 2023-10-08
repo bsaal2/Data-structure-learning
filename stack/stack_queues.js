@@ -58,3 +58,5 @@ StackWithQueue.prototype.printAllElements = function() {
 StackWithQueue.prototype.isEmpty = function() {
     return !this.queue1.elements.length;
 }
+
+module.exports = StackWithQueue;
