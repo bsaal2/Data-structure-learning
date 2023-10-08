@@ -16,6 +16,9 @@
  */
 
 // Example: 1, 2, 3, 4
+/**
+ * Todo: Making the pop operation costly
+ */
 
 const Queue = require('../Queue/queue_array');
 
@@ -25,9 +28,19 @@ function StackWithQueue() {
 }
 
 StackWithQueue.prototype.push = function(value) {
+    this.queue2.enqueue(value);
+
+    while(this.queue1.elements.length) {
+        this.queue2.enqueue(this.queue1.dequeue());
+    }
+
+    this.queue1 = this.queue2;
+    this.queue2 = new Queue();
+}
+
+StackWithQueue.prototype.pushTwoLoops = function(value) {
     if (this.isEmpty()) { 
         this.queue1.enqueue(value);
-        this.size++;
         return;
     }
 
