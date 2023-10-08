@@ -42,3 +42,10 @@ dequeue and enqueue back except newly added. This ensure the new added elements 
 In this case, while removing the element, we have to dequeue all the elements from the Queue first.
 Secondly all the elements except last should be enqueue back.
 This ensure lastly added elements are removed.
+
+#### 3. Implement two Stacks using a single array
+
+The concept is to use the same array for both stacks. so we can divide the space into two halves.
+Based on this we can do the implementation
+
+`Status`: Yet to be done

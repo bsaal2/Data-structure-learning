@@ -1,5 +1,7 @@
 
-/** Stack implementation using Array and Javascript */
+/** Stack implementation using Array and Javascript
+ * Todo: Implement the underflow and overflow concept as well
+ */
 
 function Stack() {
    this.elements = [];
