@@ -52,3 +52,16 @@ Parent and child nodes of a node
 ### 13. Subtree
 
 Any nodes of a tree along with its descendants
+
+
+## Types of Tree
+
+Below are the list of trees based on the number of children
+
+### 1. Binary Tree
+
+The tree having maximum 2 children is called Binary Tree.
+
+### 2. Ternary Tree
+
+### 3. N-ary Tree
