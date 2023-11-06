@@ -1,5 +1,6 @@
 function BinaryTree() {
     this.root = null;
+    this.size = 0;
     this.degree = 0;
 }
 
@@ -8,6 +9,7 @@ BinaryTree.prototype.printAllNodes = function(current) {
     if (!current) return;
 
     console.log(current.value);
+    this.size++;
 
     const childrens = [];
     if (current.left) childrens.push(current.left);
