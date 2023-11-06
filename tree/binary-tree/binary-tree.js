@@ -75,4 +75,32 @@ BinaryTree.prototype.printDegreeOfNode = function(current) {
     }
 }
 
+/** Pre-order Traversal */
+BinaryTree.prototype.PreOrderTraversal = function(current) {
+    if (!current) return;
+
+    
+    console.log('Node:', current.value);
+    this.PreOrderTraversal(current.left);
+    this.PreOrderTraversal(current.right);
+}
+
+/** In-order Traversal */
+BinaryTree.prototype.InOrderTraversal = function(current) {
+    if (!current) return;
+
+    this.InOrderTraversal(current.left);
+    console.log('Node: ', current.value);
+    this.InOrderTraversal(current.right);
+}
+
+/** Post-order Traversal */
+BinaryTree.prototype.PostOrderTraversal = function(current) {
+    if (!current) return;
+
+    this.PostOrderTraversal(current.left);
+    this.PostOrderTraversal(current.right);
+    console.log('Node: ', current.value);
+}
+
 module.exports = BinaryTree;
