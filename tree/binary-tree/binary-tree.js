@@ -1,7 +1,10 @@
+const Queue = require('../../Queue/queue_array');
+
 function BinaryTree() {
     this.root = null;
     this.size = 0;
     this.degree = 0;
+    this.height = 0;
 }
 
 /** Print all nodes value */
@@ -75,17 +78,27 @@ BinaryTree.prototype.printDegreeOfNode = function(current) {
     }
 }
 
-/** Pre-order Traversal */
+/** Print height of the binary tree */
+BinaryTree.prototype.getHeight = function(current) {
+    if (!current) return 0;
+
+    const lHeight = this.getHeight(current.left);
+    const rHeight = this.getHeight(current.right);
+
+    if (lHeight > rHeight) return lHeight + 1;
+    else return rHeight + 1;
+}
+
+/** DFS: Pre-order Traversal */
 BinaryTree.prototype.PreOrderTraversal = function(current) {
     if (!current) return;
-
     
     console.log('Node:', current.value);
     this.PreOrderTraversal(current.left);
     this.PreOrderTraversal(current.right);
 }
 
-/** In-order Traversal */
+/** DFS: In-order Traversal */
 BinaryTree.prototype.InOrderTraversal = function(current) {
     if (!current) return;
 
@@ -94,13 +107,48 @@ BinaryTree.prototype.InOrderTraversal = function(current) {
     this.InOrderTraversal(current.right);
 }
 
-/** Post-order Traversal */
+/** DFS: Post-order Traversal */
 BinaryTree.prototype.PostOrderTraversal = function(current) {
     if (!current) return;
 
     this.PostOrderTraversal(current.left);
     this.PostOrderTraversal(current.right);
     console.log('Node: ', current.value);
+}
+
+BinaryTree.prototype.PrintCurrentLevelElements = function(current, level) {
+    if (!current) return;
+
+    if (level === 1) console.log('Value =>', current.value)
+    else {
+        this.PrintCurrentLevelElements(current.left, level - 1);
+        this.PrintCurrentLevelElements(current.right, level - 1);
+    }
+}
+
+/** BFS: Level Order Traversal */
+BinaryTree.prototype.LevelOrderTraversal = function(current) {
+    const height = this.getHeight(current);
+
+    for (let i = 1; i <= height; i++) {
+        this.PrintCurrentLevelElements(current, i);
+    }
+}
+
+// BFS Traversal using Queue
+BinaryTree.prototype.LevelOrderTraversalQueue = function(current) {
+    if (!current) console.info('Tree is empty');
+
+    const QueueObj = new Queue();
+    QueueObj.enqueue(current);
+
+    while(QueueObj.elements.length) {
+        const node = QueueObj.dequeue();
+        console.log('Node', node.value);
+
+        if (node.left) QueueObj.enqueue(node.left);
+        if (node.right) QueueObj.enqueue(node.right);
+    }
 }
 
 module.exports = BinaryTree;
