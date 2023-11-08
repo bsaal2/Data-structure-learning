@@ -1,3 +1,5 @@
+const Queue = require('../../Queue/queue_array');
+
 function BinaryTree() {
     this.root = null;
     this.size = 0;
@@ -130,6 +132,22 @@ BinaryTree.prototype.LevelOrderTraversal = function(current) {
 
     for (let i = 1; i <= height; i++) {
         this.PrintCurrentLevelElements(current, i);
+    }
+}
+
+// BFS Traversal using Queue
+BinaryTree.prototype.LevelOrderTraversalQueue = function(current) {
+    if (!current) console.info('Tree is empty');
+
+    const QueueObj = new Queue();
+    QueueObj.enqueue(current);
+
+    while(QueueObj.elements.length) {
+        const node = QueueObj.dequeue();
+        console.log('Node', node.value);
+
+        if (node.left) QueueObj.enqueue(node.left);
+        if (node.right) QueueObj.enqueue(node.right);
     }
 }
 

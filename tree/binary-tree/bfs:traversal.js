@@ -26,3 +26,7 @@ node3.right = node7;
 console.group('levelorder traversal');
 TreeObj.LevelOrderTraversal(TreeObj.root);
 console.groupEnd('levelorder traversal');
+
+console.group('levelorder traversal using Queue');
+TreeObj.LevelOrderTraversalQueue(TreeObj.root);
+console.groupEnd('levelorder traversal using Queue');
