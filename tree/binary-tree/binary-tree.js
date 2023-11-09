@@ -188,4 +188,27 @@ BinaryTree.prototype.ReverseLevelOrderTraversalQueue = function(current) {
     }
 }
 
+/** Binary Tree Height: Number of vertices from the root node to deepeset leaf node
+ * Using the BFS method
+ * Will be using the Queue
+ */
+BinaryTree.prototype.BFSCalculateTreeHeight = function (current) {
+    if (!current) return 0;
+
+    const queue = [];
+    queue.push(current);
+    let height = 0;
+    while (queue.length) {
+        const size = queue.length;
+        for (let i=0; i<size; i++) {
+            const temp = queue.shift();
+            if (temp.left) queue.push(temp.left);
+            if (temp.right) queue.push(temp.right);
+        }
+        height++;
+    }
+
+    return height;
+}
+
 module.exports = BinaryTree;
