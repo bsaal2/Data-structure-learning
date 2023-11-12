@@ -151,4 +151,64 @@ BinaryTree.prototype.LevelOrderTraversalQueue = function(current) {
     }
 }
 
+/** BFS: Reverse Traversal
+ * Traverse the node from leaf node to root node
+ * Method1: Using Naive Approach
+ */
+BinaryTree.prototype.ReverseLevelOrderTraversal = function(current) {
+    if (!current) return;
+
+    const height = this.getHeight(current);
+
+    for (let i = height; i > 0; i--) {
+        this.PrintCurrentLevelElements(current, i);
+    }
+}
+
+/* 
+ Method 2: Using Queue and Stack Implementation
+*/
+BinaryTree.prototype.ReverseLevelOrderTraversalQueue = function(current) {
+    const queue = [];
+    const stack = [];
+
+    if (!current) throw new Error('Tree is empty');
+
+    queue.push(current);
+    while (queue.length) {
+        const temp = queue.shift();
+        stack.push(temp);
+
+        if (temp.left) queue.push(temp.left);
+        if (temp.right) queue.push(temp.right);
+    }
+
+    while (stack.length) {
+        console.log(stack.pop()?.value);
+    }
+}
+
+/** Binary Tree Height: Number of vertices from the root node to deepeset leaf node
+ * Using the BFS method
+ * Will be using the Queue
+ */
+BinaryTree.prototype.BFSCalculateTreeHeight = function (current) {
+    if (!current) return 0;
+
+    const queue = [];
+    queue.push(current);
+    let height = 0;
+    while (queue.length) {
+        const size = queue.length;
+        for (let i=0; i<size; i++) {
+            const temp = queue.shift();
+            if (temp.left) queue.push(temp.left);
+            if (temp.right) queue.push(temp.right);
+        }
+        height++;
+    }
+
+    return height;
+}
+
 module.exports = BinaryTree;
