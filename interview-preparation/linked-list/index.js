@@ -5,6 +5,7 @@ function Node(data) {
 
 function LinkedList() {
     this.head = null;
+    this.size = 0;
 }
 
 /** 
@@ -16,6 +17,14 @@ LinkedList.prototype.addNode = function (value) {
     const nodeObj = new Node(value);
     nodeObj.next = this.head;
     this.head = nodeObj;
+    this.size++;
+}
+
+LinkedList.prototype.removeFirstNode = function() {
+    const temp = this.head;
+    this.head = this.head.next;
+    this.size--;
+    return temp;
 }
 
 LinkedList.prototype.reverse = function() {
@@ -44,12 +53,14 @@ LinkedList.prototype.printAllNodeValue = function() {
     }
 }
 
-const linkedListObj = new LinkedList();
-linkedListObj.addNode(3);
-linkedListObj.addNode(2);
-linkedListObj.addNode(1);
-linkedListObj.printAllNodeValue();
+module.exports = LinkedList;
 
-linkedListObj.reverse();
-console.log('Printing in reverse order ===>')
-linkedListObj.printAllNodeValue();
+// const linkedListObj = new LinkedList();
+// linkedListObj.addNode(3);
+// linkedListObj.addNode(2);
+// linkedListObj.addNode(1);
+// linkedListObj.printAllNodeValue();
+
+// linkedListObj.reverse();
+// console.log('Printing in reverse order ===>')
+// linkedListObj.printAllNodeValue();
