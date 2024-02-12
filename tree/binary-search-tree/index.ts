@@ -5,6 +5,18 @@ class BinarySearchTree  extends BinaryTree {
         super();
     }
 
+    iterativeSearch(search: number) {
+        let current = this.root;
+
+        while(current) {
+            if (current.val === search) return true;
+            else if (current.val > search) current = current.left;
+            else current = current.right;
+        }
+
+        return false;
+    }
+
     convertSortedArrayToBST(arr: Array<number>, start: number, end: number) {
         if (start > end) return null;
 
@@ -21,8 +33,7 @@ class BinarySearchTree  extends BinaryTree {
 const input = [1, 2, 3, 4, 5, 6, 7];
 const bst = new BinarySearchTree();
 bst.root = bst.convertSortedArrayToBST(input, 0, input.length - 1);
-bst.preorderTraversal(bst.root);
-console.log('Pre order: ', bst.preorderList);
+console.log(bst.iterativeSearch(10));
 
 //     4
 //    /   \
