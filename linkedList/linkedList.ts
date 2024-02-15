@@ -28,6 +28,8 @@ export class LinkedList {
             previous = current;
             current = next;
         }
+
+        return previous;
     }
 }
 
