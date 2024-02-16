@@ -3,6 +3,7 @@
 1. Heap is a complete binary tree
 2. It either has the max or min value in the node compared to its child and same holds true for each node
 
+
 ## Properties
 
 1. complete binary tree
@@ -10,6 +11,7 @@
 3. parent-child relationship: left child = 2i+1 and right child = 2i+2
 4. efficient insertion and removal
 5. 
+
 
 ### Operations 
 
@@ -28,6 +30,7 @@ Getting the max/min element i.e from the root node
 #### 4. Heapify
 
 process to re-arrange the heap and make it follow the heap property.
+
 
 ### Types of Heap
 
