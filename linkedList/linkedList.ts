@@ -17,6 +17,12 @@ export class LinkedList {
         this.root = node;
     }
 
+    removeHead() {
+        const temp = this.root;
+        if (this.root && this.root.next) this.root = this.root.next;
+        return temp
+    }
+
     reverseLinkedList() {
         let current = this.root;
         let previous: Node | null = null;
