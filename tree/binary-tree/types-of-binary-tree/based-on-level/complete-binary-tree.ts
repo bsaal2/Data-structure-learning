@@ -19,5 +19,8 @@
  *  Process this recursively.
  * 
  * 2. Using array implementation of Level Order Traversal
+ * parent = (i - 1) / 2
+ * left child = (2i+1)/2
+ * right child = (2i+2)/2
  */
 
