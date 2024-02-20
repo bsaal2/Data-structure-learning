@@ -4,7 +4,7 @@
  * But we will be using class based way here
  */
 
-class Graph {
+export default class Graph {
     size: number;
     vertices: Array<string> = [];
     ajacencyMatrix: Array<Array<number>> = [];
