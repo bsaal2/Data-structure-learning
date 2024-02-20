@@ -60,6 +60,28 @@ export default class Graph {
 
         this.dsfUtil(verticeIndex, visited);
     }
+
+    bfsTraversal(startingVertex: string) {
+        const visited = new Map<number, boolean>();
+        const vertexIndex = this.vertices.indexOf(startingVertex);
+
+        const queue: Array<number> = [];
+        queue.push(vertexIndex);
+
+        let bfs = '';
+        while(queue.length) {
+            const popedVertex = queue.shift() as number;
+            if(!visited.has(popedVertex)) {
+                bfs = bfs.concat(this.vertices[popedVertex]);
+                visited.set(popedVertex, true);
+                for (let i = 0; i < this.size; i++) {
+                    if (this.ajacencyMatrix[popedVertex][i]) queue.push(i);
+                }
+            }
+        }
+
+        console.log('BFS traversal: ', bfs);
+    }
 }
 
 const graph = new Graph(7);
@@ -82,4 +104,4 @@ graph.addEdge(2, 6)  // C - G
 graph.addEdge(1, 5)  // B - F
 
 graph.printGraph();
-graph.dsfTravesal('D')
+graph.bfsTraversal('D')
