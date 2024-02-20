@@ -10,12 +10,7 @@ export default class Graph {
     ajacencyMatrix: Array<Array<number>> = [];
 
     private initializeAjacencyMatrix() {
-       this.ajacencyMatrix = [
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0]
-       ];
+       this.ajacencyMatrix = Array(this.size).fill(0).map(each => Array(this.size).fill(0));
     }
 
     constructor(value: number) {
@@ -49,20 +44,42 @@ export default class Graph {
         }
         console.log(']\n');
     }
+
+    dsfUtil(vertex: number, visited: Map<number, number>) {
+        visited.set(vertex, vertex);
+        console.log('Vertice: ', this.vertices[vertex]);
+
+        for (let i = 0; i < this.size; i++) {
+            if (this.ajacencyMatrix[vertex][i] && !visited.has(i)) this.dsfUtil(i, visited);
+        }
+    }
+
+    dsfTravesal(startingVertex: string) {
+        const visited = new Map<number, number>();
+        const verticeIndex = this.vertices.indexOf(startingVertex);
+
+        this.dsfUtil(verticeIndex, visited);
+    }
 }
 
-const graph = new Graph(4);
-console.log('Initialize:', graph.ajacencyMatrix);
-graph.addVertice(0, 'A');
-graph.addVertice(1, 'B');
-graph.addVertice(2, 'C');
-graph.addVertice(3, 'D');
-console.log('Vertices: ', graph.vertices);
+const graph = new Graph(7);
+graph.addVertice(0, 'A')
+graph.addVertice(1, 'B')
+graph.addVertice(2, 'C')
+graph.addVertice(3, 'D')
+graph.addVertice(4, 'E')
+graph.addVertice(5, 'F')
+graph.addVertice(6, 'G')
 
-graph.addEdge(0, 1);
-graph.addEdge(0, 2);
-graph.addEdge(0, 3);
-graph.addEdge(1, 2);
-console.log('Path: ', graph.ajacencyMatrix);
+graph.addEdge(3, 0)  // D - A
+graph.addEdge(0, 2)  // A - C
+graph.addEdge(0, 3)  // A - D
+graph.addEdge(0, 4)  // A - E
+graph.addEdge(4, 2)  // E - C
+graph.addEdge(2, 5)  // C - F
+graph.addEdge(2, 1)  // C - B
+graph.addEdge(2, 6)  // C - G
+graph.addEdge(1, 5)  // B - F
 
 graph.printGraph();
+graph.dsfTravesal('D')
