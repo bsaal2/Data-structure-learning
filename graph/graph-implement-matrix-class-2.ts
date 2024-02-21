@@ -58,6 +58,26 @@ export default class Graph {
 
         this.dfsUtil(rootIndex);
     }
+
+    /** implementation using Queue method */
+    bfsTraversal(root: string) {
+        const rootIndex = this.vertices.indexOf(root);
+
+        const queue: Array<number> = [];
+        queue.push(rootIndex);
+
+        while(queue.length) {
+            const popedElementIndex = queue.shift() as number;
+            this.visited.set(popedElementIndex, true);
+            console.log(this.vertices[popedElementIndex]);
+
+            let index = 0;
+            while(index < this.size) {
+                if (this.matrix[popedElementIndex][index] && !this.visited.has(index)) queue.push(index);
+                index++;
+            }
+        }
+    }
 }
 
 const graph = new Graph(7);
@@ -80,4 +100,4 @@ graph.addEdge(2, 6, 1)  // C -> G
 graph.addEdge(5, 1, 1)  // F -> B
 graph.addEdge(1, 2, 1)  // B -> C
 graph.printGraph();
-graph.dfsTraversal('D');
+graph.bfsTraversal('D');
