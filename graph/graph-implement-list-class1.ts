@@ -7,6 +7,7 @@
 export class Graph {
     size: number;
     adjacencyList: Record<string, Array<string>> = {};
+    visited = new Set<string>();
 
     constructor(value: number) {
         this.size = value;
@@ -37,6 +38,35 @@ export class Graph {
             console.log(adjacentNode);
         }
     }
+
+    /** using recursive approach */
+    dfsTraversal(root: string) {
+        this.visited.add(root);
+        console.log(root);
+
+        for (let each of this.adjacencyList[root]) {
+            if (!this.visited.has(each)) this.dfsTraversal(each);
+        }
+    }
+    
+    dfsUtil(root: string, stack: Array<string>) {
+        stack.push(root);
+        
+        while(stack.length) {
+            const popedElement = stack.pop() as string;
+            this.visited.add(popedElement);
+
+            for (let each of this.adjacencyList[popedElement]) {
+                if (!this.visited.has(each)) stack.push(each);
+            }
+        }
+    }
+
+    dfsTraversalWithStack(root: string) {
+        const stack: Array<string> = [];
+        
+        this.dfsUtil(root, stack);
+    }
 }
 
 const graph = new Graph(7);
@@ -58,3 +88,5 @@ graph.addEdge('C', 'G')  // C - G
 graph.addEdge('B', 'F')  // B - F
 
 graph.printGraph();
+graph.dfsTraversalWithStack('D');
+console.log(graph.visited);
